@@ -24,9 +24,9 @@ class ChatBot:
         config_dict = {
             "model": {
                 "model_cls": "VideoChat2_it",
-                "vit_blip_model_path": "/mnt/sdb1/videoqa_model/VideoChat2/umt_l16_qformer.pth",
-                "llama_model_path": "/mnt/sdb1/videoqa_model/vicuna-7b-v0",
-                "videochat2_model_path": "/mnt/sdb1/videoqa_model/videochat2_7b_stage2.pth",
+                "vit_blip_model_path": vit_blip_path,
+                "llama_model_path": llama_model_path,
+                "videochat2_model_path": videochat2_model_stage2_path,
                 "freeze_vit": False,
                 "freeze_qformer": False,
                 "max_txt_len": 512,
@@ -70,10 +70,6 @@ class ChatBot:
         }
 
         cfg = EasyDict(config_dict)  
-        # mo
-        cfg.model.llama_model_path = llama_model_path
-        cfg.model.vit_blip_path = vit_blip_path
-        cfg.model.videochat2_model_path = videochat2_model_stage2_path
 
         
         cfg.model.vision_encoder.num_frames = 16
