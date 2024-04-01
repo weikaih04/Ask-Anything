@@ -8,10 +8,10 @@ from os.path import basename
 import numpy as np
 import datetime
 
-from dataset.base_dataset import ImageVideoBaseDataset
-from dataset.utils import load_anno
-from dataset.video_utils import VIDEO_READER_FUNCS
-from utils.distributed import is_main_process
+from .base_dataset import ImageVideoBaseDataset
+from .utils import load_anno
+from .video_utils import VIDEO_READER_FUNCS
+from ..utils.distributed import is_main_process
 
 logger = logging.getLogger(__name__)
 

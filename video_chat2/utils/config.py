@@ -105,7 +105,30 @@ class Config(object):
         for k in BASE_CONFIG:
             cfg[k] = cfg.pop(k)
         return cfg
+    
+    @classmethod
+    def from_dict(cls, dict_obj: dict) -> EasyDict:
+        """
+        Build config from a dictionary.
 
+        Args:
+            dict_obj (dict): The dictionary object to convert into a Config object.
+
+        Returns:
+            EasyDict: The converted dictionary as an EasyDict for attribute-style access.
+        """
+        # Make sure the input is a dictionary
+        if not isinstance(dict_obj, dict):
+            raise ValueError("Input must be a dictionary")
+
+        # Convert dictionary to EasyDict for attribute-style access
+        cfg_dict = EasyDict(dict_obj)
+
+        # Optionally, perform additional processing such as evaluating string expressions
+        cfg_dict = eval_dict_leaf(cfg_dict)
+
+        return cfg_dict
+    
     @classmethod
     def from_file(cls, filepath: str) -> EasyDict:
         """Build config from file. Supported filetypes: `.py`,`.yaml`,`.json`.

@@ -3,9 +3,9 @@ from torch.utils.data import ConcatDataset, DataLoader
 from torchvision import transforms
 from torchvision.transforms import InterpolationMode
 
-from dataset.dataloader import MetaLoader
-from dataset.pt_dataset import PTImgTrainDataset, PTVidTrainDataset, PTImgEvalDataset, PTVidEvalDataset
-from dataset.it_dataset import ITImgTrainDataset, ITVidTrainDataset
+from .dataloader import MetaLoader
+from .pt_dataset import PTImgTrainDataset, PTVidTrainDataset, PTImgEvalDataset, PTVidEvalDataset
+from .it_dataset import ITImgTrainDataset, ITVidTrainDataset
 
 
 def get_media_type(dataset_config):

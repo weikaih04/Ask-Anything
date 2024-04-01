@@ -8,7 +8,7 @@ from enum import auto, Enum
 import numpy as np
 from decord import VideoReader, cpu
 import torchvision.transforms as T
-from dataset.video_transforms import (
+from .dataset.video_transforms import (
     GroupNormalize, GroupScale, GroupCenterCrop, 
     Stack, ToTorchFormatTensor
 )
@@ -113,7 +113,7 @@ class Chat:
 
         images_group = list()
         for frame_index in frame_indices:
-            img = Image.fromarray(vr[frame_index].asnumpy())
+            img = Image.fromarray(vr[frame_index].numpy())
             images_group.append(img)
         torch_imgs_224 = transform(images_group)
         if return_msg:
